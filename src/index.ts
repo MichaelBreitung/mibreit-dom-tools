@@ -155,7 +155,7 @@ function addResizeEventListener(callback: (event: UIEvent) => void) {
   window.addEventListener('resize', callback);
 }
 
-function addEventListener(element: HTMLElement, event: string, callback: () => void) {
+function addEventListener(element: HTMLElement, event: string, callback: (event: any) => void) {
   element.addEventListener(event, callback);
 }
 

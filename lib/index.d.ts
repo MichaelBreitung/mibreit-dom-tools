@@ -37,7 +37,7 @@ declare function addClickEventListener(element: HTMLElement, callback: (event?: 
 declare function addKeyEventListener(callback: (event: KeyboardEvent) => void): void;
 declare function addScrollEventListener(callback: (event: UIEvent) => void): void;
 declare function addResizeEventListener(callback: (event: UIEvent) => void): void;
-declare function addEventListener(element: HTMLElement, event: string, callback: () => void): void;
+declare function addEventListener(element: HTMLElement, event: string, callback: (event: any) => void): void;
 declare function disableContextMenu(element: HTMLElement): void;
 declare function disableDragging(element: HTMLElement): void;
 declare function getElement(selector: string): HTMLElement | null;
