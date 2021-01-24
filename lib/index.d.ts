@@ -9,9 +9,9 @@ export declare type TElementDimention = {
 declare function documentReady(callback: () => void): void;
 declare function getRootFontSize(): number;
 declare function createElement(tagName: string): HTMLElement;
+declare function removeElement(element: HTMLElement): void;
 declare function prependChildElement(element: HTMLElement, parent: HTMLElement): void;
 declare function appendChildElement(element: HTMLElement, parent: HTMLElement): void;
-declare function removeChildElement(element: HTMLElement, parent?: HTMLElement): void;
 declare function prependBeforeChild(element: HTMLElement, child: HTMLElement): void;
 declare function getChildNodes(element: HTMLElement): Array<Node>;
 declare function setInnerHtml(parent: HTMLElement, inner: string): void;
@@ -24,12 +24,13 @@ declare function getElementPosition(element: HTMLElement): {
     x: number;
     y: number;
 };
-declare function getCssClass(element: HTMLElement): string;
+declare function getCssClass(element: HTMLElement): string | null;
 declare function applyCssClass(element: HTMLElement, cssClass: string | null): void;
 declare function getCssStyle(element: HTMLElement, styleName: string): string;
 declare function applyCssStyle(element: HTMLElement, styleName: string, styleProperty: string | null): void;
 declare function applyCssStyles(element: HTMLElement, styles: string | null): void;
-declare function getAttribute(element: HTMLElement, attribute: string): string;
+declare function hasAttribute(element: HTMLElement, attribute: string): boolean;
+declare function getAttribute(element: HTMLElement, attribute: string): string | null;
 declare function setAttribute(element: HTMLElement, attribute: string, value: string): void;
 declare function removeAttribute(element: HTMLElement, attribute: string): void;
 declare function addClickEventListener(element: HTMLElement, callback: (event?: MouseEvent) => void): void;
@@ -46,9 +47,9 @@ export declare const DomTools: {
     documentReady: typeof documentReady;
     getRootFontSize: typeof getRootFontSize;
     createElement: typeof createElement;
+    removeElement: typeof removeElement;
     prependChildElement: typeof prependChildElement;
     appendChildElement: typeof appendChildElement;
-    removeChildElement: typeof removeChildElement;
     prependBeforeChild: typeof prependBeforeChild;
     getChildNodes: typeof getChildNodes;
     setInnerHtml: typeof setInnerHtml;
@@ -63,6 +64,7 @@ export declare const DomTools: {
     getCssStyle: typeof getCssStyle;
     applyCssStyle: typeof applyCssStyle;
     applyCssStyles: typeof applyCssStyles;
+    hasAttribute: typeof hasAttribute;
     getAttribute: typeof getAttribute;
     setAttribute: typeof setAttribute;
     removeAttribute: typeof removeAttribute;

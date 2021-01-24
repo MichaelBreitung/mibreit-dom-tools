@@ -3,7 +3,7 @@
  * @copyright Michael Breitung Photography (www.mibreit-photo.com)
  */
 
-export type TElementDimention = {width: number, height: number};
+export type TElementDimention = { width: number; height: number };
 
 function documentReady(callback: () => void) {
   window.addEventListener('load', callback);
@@ -17,6 +17,10 @@ function createElement(tagName: string): HTMLElement {
   return document.createElement(tagName);
 }
 
+function removeElement(element: HTMLElement) {
+  element.parentElement.removeChild(element);  
+}
+
 function prependChildElement(element: HTMLElement, parent: HTMLElement) {
   parent.prepend(element);
 }
@@ -25,17 +29,7 @@ function appendChildElement(element: HTMLElement, parent: HTMLElement) {
   parent.append(element);
 }
 
-function removeChildElement(element: HTMLElement, parent: HTMLElement = null) {
-  if (parent)
-  {
-    parent.removeChild(element);
-  }
-  else{
-    getParentElement(element).removeChild(element);
-  }
-}
-
-function prependBeforeChild(element: HTMLElement, child: HTMLElement) {  
+function prependBeforeChild(element: HTMLElement, child: HTMLElement) {
   child.parentElement.insertBefore(element, child);
 }
 
@@ -77,8 +71,7 @@ function getElementDimension(element: HTMLElement): TElementDimention {
   };
 }
 
-function isElementWithinWindow(element: HTMLElement)
-{
+function isElementWithinWindow(element: HTMLElement) {
   const elementRect: DOMRect = element.getBoundingClientRect();
   const windowHeight = window.innerHeight;
   return elementRect.top + elementRect.height > 0 && elementRect.top < windowHeight;
@@ -91,8 +84,8 @@ function getElementPosition(element: HTMLElement): { x: number; y: number } {
   return { y: rect.top + scrollTop, x: rect.left + scrollLeft };
 }
 
-function getCssClass(element: HTMLElement): string {
-  return element.getAttribute('class');
+function getCssClass(element: HTMLElement): string | null {
+  return getAttribute(element, 'class');
 }
 
 function applyCssClass(element: HTMLElement, cssClass: string | null) {
@@ -126,17 +119,23 @@ function applyCssStyles(element: HTMLElement, styles: string | null) {
   }
 }
 
-function getAttribute(element: HTMLElement, attribute: string) : string {
-  return element.getAttribute(attribute);
+function hasAttribute(element: HTMLElement, attribute: string): boolean {
+  return element.hasAttribute(attribute);
 }
 
-function setAttribute(element: HTMLElement, attribute: string, value: string)
-{
+function getAttribute(element: HTMLElement, attribute: string): string | null {
+  if (!element.hasAttribute(attribute)) {
+    return null;
+  } else {
+    return element.getAttribute(attribute);
+  }
+}
+
+function setAttribute(element: HTMLElement, attribute: string, value: string) {
   element.setAttribute(attribute, value);
 }
 
-function removeAttribute(element: HTMLElement, attribute: string)
-{
+function removeAttribute(element: HTMLElement, attribute: string) {
   element.removeAttribute(attribute);
 }
 
@@ -146,7 +145,7 @@ function addClickEventListener(element: HTMLElement, callback: (event?: MouseEve
 
 function addKeyEventListener(callback: (event: KeyboardEvent) => void) {
   document.addEventListener('keydown', callback);
-};
+}
 
 function addScrollEventListener(callback: (event: UIEvent) => void) {
   document.addEventListener('scroll', callback);
@@ -180,18 +179,17 @@ function getElements(selector: string): NodeListOf<HTMLElement> {
   return document.querySelectorAll(selector);
 }
 
-function getKeyFromEvent(event: KeyboardEvent) : string
-{
-  return event.key;  
+function getKeyFromEvent(event: KeyboardEvent): string {
+  return event.key;
 }
 
 export const DomTools = {
   documentReady,
   getRootFontSize,
   createElement,
+  removeElement,
   prependChildElement,
-  appendChildElement,
-  removeChildElement,
+  appendChildElement,  
   prependBeforeChild,
   getChildNodes,
   setInnerHtml,
@@ -206,6 +204,7 @@ export const DomTools = {
   getCssStyle,
   applyCssStyle,
   applyCssStyles,
+  hasAttribute,
   getAttribute,
   setAttribute,
   removeAttribute,
@@ -218,5 +217,5 @@ export const DomTools = {
   disableDragging,
   getElement,
   getElements,
-  getKeyFromEvent
+  getKeyFromEvent,
 };
