@@ -1,0 +1,24 @@
+{
+  "name": "mibreit-dom-tools",
+  "version": "0.0.1",
+  "description": "Abstraction for dom manipulation calls",
+  "main": "lib/indexNpm.js",
+  "types": "lib/indexNpm.d.ts",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack --config webpack.config.js",
+    "build:npm": "webpack --config webpack.config.npm.js",
+    "test": ""
+  },
+  "keywords": [
+    "Typescript"
+  ],
+  "author": "Michael Breitung",
+  "license": "BSD-2-Clause",
+  "devDependencies": {
+    "ts-loader": "^8.0.14",
+    "typescript": "^4.1.3",
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.1"
+  }
+}
