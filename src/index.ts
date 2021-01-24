@@ -185,7 +185,7 @@ function getKeyFromEvent(event: KeyboardEvent) : string
   return event.key;  
 }
 
-export default {
+export const DomTools = {
   documentReady,
   getRootFontSize,
   createElement,

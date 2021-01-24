@@ -42,7 +42,7 @@ declare function disableDragging(element: HTMLElement): void;
 declare function getElement(selector: string): HTMLElement | null;
 declare function getElements(selector: string): NodeListOf<HTMLElement>;
 declare function getKeyFromEvent(event: KeyboardEvent): string;
-declare const _default: {
+export declare const DomTools: {
     documentReady: typeof documentReady;
     getRootFontSize: typeof getRootFontSize;
     createElement: typeof createElement;
@@ -77,4 +77,4 @@ declare const _default: {
     getElements: typeof getElements;
     getKeyFromEvent: typeof getKeyFromEvent;
 };
-export default _default;
+export {};
