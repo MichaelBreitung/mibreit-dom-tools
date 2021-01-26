@@ -18,7 +18,7 @@ function createElement(tagName: string): HTMLElement {
 }
 
 function removeElement(element: HTMLElement) {
-  element.parentElement.removeChild(element);  
+  element.parentElement.removeChild(element);
 }
 
 function prependChildElement(element: HTMLElement, parent: HTMLElement) {
@@ -84,14 +84,28 @@ function getElementPosition(element: HTMLElement): { x: number; y: number } {
   return { y: rect.top + scrollTop, x: rect.left + scrollLeft };
 }
 
-function getCssClass(element: HTMLElement): string | null {
+function getCssClasses(element: HTMLElement): string | null {
   return getAttribute(element, 'class');
 }
 
-function applyCssClass(element: HTMLElement, cssClass: string | null) {
-  if (cssClass !== null) {
-    element.setAttribute('class', cssClass);
-  } else {
+function addCssClass(element: HTMLElement, cssClass: string) {
+  if (!element.classList.contains(cssClass)) {
+    element.classList.add(cssClass);
+  }
+}
+
+function removeCssClass(element: HTMLElement, cssClass: string) {
+  if (element.classList.contains(cssClass)) {
+    element.classList.remove(cssClass);
+  }
+}
+
+function overwriteCssClasses(element: HTMLElement, cssClasses: string) {
+  element.setAttribute('class', cssClasses);
+}
+
+function removeAllCssClasses(element: HTMLElement) {
+  if (element.hasAttribute('class')) {
     element.removeAttribute('class');
   }
 }
@@ -100,18 +114,18 @@ function getCssStyle(element: HTMLElement, styleName: string): string {
   return element.style.getPropertyValue(styleName);
 }
 
-function applyCssStyle(element: HTMLElement, styleName: string, styleProperty: string | null) {
-  if (styleProperty !== null) {
-    element.style.setProperty(styleName, styleProperty);
-  } else {
-    element.style.removeProperty(styleName);
-    if (element.style.length === 0) {
-      element.removeAttribute('style');
-    }
+function addCssStyle(element: HTMLElement, styleName: string, styleProperty: string) {
+  element.style.setProperty(styleName, styleProperty);
+}
+
+function removeCssStyle(element: HTMLElement, styleName: string) {
+  element.style.removeProperty(styleName);
+  if (element.style.length === 0) {
+    element.removeAttribute('style');
   }
 }
 
-function applyCssStyles(element: HTMLElement, styles: string | null) {
+function overwriteCssStyles(element: HTMLElement, styles: string | null) {
   if (styles !== null) {
     element.style.cssText = styles;
   } else {
@@ -189,7 +203,7 @@ export const DomTools = {
   createElement,
   removeElement,
   prependChildElement,
-  appendChildElement,  
+  appendChildElement,
   prependBeforeChild,
   getChildNodes,
   setInnerHtml,
@@ -199,11 +213,15 @@ export const DomTools = {
   getElementDimension,
   getElementPosition,
   isElementWithinWindow,
-  getCssClass,
-  applyCssClass,
+  getCssClasses,
+  addCssClass,
+  removeCssClass,
+  removeAllCssClasses,
+  overwriteCssClasses,
   getCssStyle,
-  applyCssStyle,
-  applyCssStyles,
+  addCssStyle,
+  removeCssStyle,
+  overwriteCssStyles,
   hasAttribute,
   getAttribute,
   setAttribute,
