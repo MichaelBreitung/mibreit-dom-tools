@@ -114,6 +114,10 @@ function getCssStyle(element: HTMLElement, styleName: string): string {
   return element.style.getPropertyValue(styleName);
 }
 
+function getComputedCssStyle(element: HTMLElement, styleName: string): string {
+  return window.getComputedStyle(element).getPropertyValue(styleName);
+}
+
 function addCssStyle(element: HTMLElement, styleName: string, styleProperty: string) {
   element.style.setProperty(styleName, styleProperty);
 }
@@ -219,6 +223,7 @@ export const DomTools = {
   removeAllCssClasses,
   overwriteCssClasses,
   getCssStyle,
+  getComputedCssStyle,
   addCssStyle,
   removeCssStyle,
   overwriteCssStyles,

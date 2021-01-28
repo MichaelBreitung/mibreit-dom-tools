@@ -30,6 +30,7 @@ declare function removeCssClass(element: HTMLElement, cssClass: string): void;
 declare function overwriteCssClasses(element: HTMLElement, cssClasses: string): void;
 declare function removeAllCssClasses(element: HTMLElement): void;
 declare function getCssStyle(element: HTMLElement, styleName: string): string;
+declare function getComputedCssStyle(element: HTMLElement, styleName: string): string;
 declare function addCssStyle(element: HTMLElement, styleName: string, styleProperty: string): void;
 declare function removeCssStyle(element: HTMLElement, styleName: string): void;
 declare function overwriteCssStyles(element: HTMLElement, styles: string | null): void;
@@ -69,6 +70,7 @@ export declare const DomTools: {
     removeAllCssClasses: typeof removeAllCssClasses;
     overwriteCssClasses: typeof overwriteCssClasses;
     getCssStyle: typeof getCssStyle;
+    getComputedCssStyle: typeof getComputedCssStyle;
     addCssStyle: typeof addCssStyle;
     removeCssStyle: typeof removeCssStyle;
     overwriteCssStyles: typeof overwriteCssStyles;
