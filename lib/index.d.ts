@@ -27,13 +27,14 @@ export declare function getElementPosition(element: HTMLElement): {
 export declare function getCssClasses(element: HTMLElement): string | null;
 export declare function addCssClass(element: HTMLElement, cssClass: string): void;
 export declare function removeCssClass(element: HTMLElement, cssClass: string): void;
-export declare function overwriteCssClasses(element: HTMLElement, cssClasses: string): void;
 export declare function removeAllCssClasses(element: HTMLElement): void;
+export declare function overwriteCssClasses(element: HTMLElement, cssClasses: string | null): void;
 export declare function getCssStyle(element: HTMLElement, styleName: string): string;
 export declare function getCssStyles(element: HTMLElement): string;
 export declare function getComputedCssStyle(element: HTMLElement, styleName: string): string;
 export declare function addCssStyle(element: HTMLElement, styleName: string, styleProperty: string): void;
 export declare function removeCssStyle(element: HTMLElement, styleName: string): void;
+export declare function removeAllCssStyles(element: HTMLElement): void;
 export declare function overwriteCssStyles(element: HTMLElement, styles: string | null): void;
 export declare function hasAttribute(element: HTMLElement, attribute: string): boolean;
 export declare function getAttribute(element: HTMLElement, attribute: string): string | null;
@@ -75,6 +76,7 @@ export declare const DomTools: {
     getComputedCssStyle: typeof getComputedCssStyle;
     addCssStyle: typeof addCssStyle;
     removeCssStyle: typeof removeCssStyle;
+    removeAllCssStyles: typeof removeAllCssStyles;
     overwriteCssStyles: typeof overwriteCssStyles;
     hasAttribute: typeof hasAttribute;
     getAttribute: typeof getAttribute;

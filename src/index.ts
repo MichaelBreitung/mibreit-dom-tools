@@ -100,14 +100,20 @@ export function removeCssClass(element: HTMLElement, cssClass: string) {
   }
 }
 
-export function overwriteCssClasses(element: HTMLElement, cssClasses: string) {
-  element.setAttribute('class', cssClasses);
-}
-
 export function removeAllCssClasses(element: HTMLElement) {
   if (element.hasAttribute('class')) {
     element.removeAttribute('class');
   }
+}
+
+export function overwriteCssClasses(element: HTMLElement, cssClasses: string | null) {
+  if (cssClasses == null)
+  {
+    removeAllCssClasses(element);
+  }
+  else{
+    element.setAttribute('class', cssClasses);
+  }  
 }
 
 export function getCssStyle(element: HTMLElement, styleName: string): string {
@@ -134,11 +140,17 @@ export function removeCssStyle(element: HTMLElement, styleName: string) {
   }
 }
 
-export function overwriteCssStyles(element: HTMLElement, styles: string | null) {
-  if (styles !== null) {
-    element.style.cssText = styles;
-  } else {
+export function removeAllCssStyles(element: HTMLElement) {
+  if (element.hasAttribute('style')) {
     element.removeAttribute('style');
+  }
+}
+
+export function overwriteCssStyles(element: HTMLElement, styles: string | null) {
+  if (styles == null) {
+    removeAllCssStyles(element)    
+  } else {
+    element.style.cssText = styles;
   }
 }
 
@@ -232,6 +244,7 @@ export const DomTools = {
   getComputedCssStyle,
   addCssStyle,
   removeCssStyle,
+  removeAllCssStyles,
   overwriteCssStyles,
   hasAttribute,
   getAttribute,
