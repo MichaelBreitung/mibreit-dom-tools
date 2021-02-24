@@ -2,7 +2,7 @@
  * @author Michael Breitung
  * @copyright Michael Breitung Photography (www.mibreit-photo.com)
  */
-export declare type TElementDimention = {
+export declare type TElementDimension = {
     width: number;
     height: number;
 };
@@ -18,7 +18,7 @@ export declare function setInnerHtml(parent: HTMLElement, inner: string): void;
 export declare function wrapElements(elements: Array<Node>, wrapper: HTMLElement): void;
 export declare function unwrapElements(wrapper: HTMLElement): void;
 export declare function getParentElement(element: HTMLElement): HTMLElement;
-export declare function getElementDimension(element: HTMLElement): TElementDimention;
+export declare function getElementDimension(element: HTMLElement): TElementDimension;
 export declare function isElementWithinWindow(element: HTMLElement): boolean;
 export declare function getElementPosition(element: HTMLElement): {
     x: number;
@@ -30,6 +30,7 @@ export declare function removeCssClass(element: HTMLElement, cssClass: string): 
 export declare function overwriteCssClasses(element: HTMLElement, cssClasses: string): void;
 export declare function removeAllCssClasses(element: HTMLElement): void;
 export declare function getCssStyle(element: HTMLElement, styleName: string): string;
+export declare function getCssStyles(element: HTMLElement): string;
 export declare function getComputedCssStyle(element: HTMLElement, styleName: string): string;
 export declare function addCssStyle(element: HTMLElement, styleName: string, styleProperty: string): void;
 export declare function removeCssStyle(element: HTMLElement, styleName: string): void;
@@ -70,6 +71,7 @@ export declare const DomTools: {
     removeAllCssClasses: typeof removeAllCssClasses;
     overwriteCssClasses: typeof overwriteCssClasses;
     getCssStyle: typeof getCssStyle;
+    getCssStyles: typeof getCssStyles;
     getComputedCssStyle: typeof getComputedCssStyle;
     addCssStyle: typeof addCssStyle;
     removeCssStyle: typeof removeCssStyle;

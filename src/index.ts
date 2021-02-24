@@ -3,7 +3,7 @@
  * @copyright Michael Breitung Photography (www.mibreit-photo.com)
  */
 
-export type TElementDimention = { width: number; height: number };
+export type TElementDimension = { width: number; height: number };
 
 export function documentReady(callback: () => void) {
   window.addEventListener('load', callback);
@@ -64,7 +64,7 @@ export function getParentElement(element: HTMLElement): HTMLElement {
   return element.parentElement;
 }
 
-export function getElementDimension(element: HTMLElement): TElementDimention {
+export function getElementDimension(element: HTMLElement): TElementDimension {
   return {
     width: element.clientWidth,
     height: element.clientHeight,
@@ -112,6 +112,11 @@ export function removeAllCssClasses(element: HTMLElement) {
 
 export function getCssStyle(element: HTMLElement, styleName: string): string {
   return element.style.getPropertyValue(styleName);
+}
+
+export function getCssStyles(element: HTMLElement) : string
+{
+  return element.style.cssText;
 }
 
 export function getComputedCssStyle(element: HTMLElement, styleName: string): string {
@@ -223,6 +228,7 @@ export const DomTools = {
   removeAllCssClasses,
   overwriteCssClasses,
   getCssStyle,
+  getCssStyles,
   getComputedCssStyle,
   addCssStyle,
   removeCssStyle,
