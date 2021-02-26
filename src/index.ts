@@ -17,6 +17,11 @@ export function createElement(tagName: string): HTMLElement {
   return document.createElement(tagName);
 }
 
+export function cloneElement(element: Node)
+{
+  return element.cloneNode();
+}
+
 export function removeElement(element: HTMLElement) {
   element.remove();
 }
@@ -25,8 +30,8 @@ export function prependChildElement(element: HTMLElement, parent: HTMLElement) {
   parent.prepend(element);
 }
 
-export function appendChildElement(element: HTMLElement, parent: HTMLElement) {
-  parent.append(element);
+export function appendChildElement(element: Node, parent: Node) {
+  parent.appendChild(element);
 }
 
 export function prependBeforeChild(element: HTMLElement, child: HTMLElement) {
@@ -222,6 +227,7 @@ export const DomTools = {
   documentReady,
   getRootFontSize,
   createElement,
+  cloneElement,
   removeElement,
   prependChildElement,
   appendChildElement,
