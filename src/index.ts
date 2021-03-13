@@ -17,8 +17,7 @@ export function createElement(tagName: string): HTMLElement {
   return document.createElement(tagName);
 }
 
-export function cloneElement(element: Node)
-{
+export function cloneElement(element: Node) {
   return element.cloneNode();
 }
 
@@ -79,7 +78,13 @@ export function getElementDimension(element: HTMLElement): TElementDimension {
 export function isElementWithinWindow(element: HTMLElement) {
   const elementRect: DOMRect = element.getBoundingClientRect();
   const windowHeight = window.innerHeight;
-  return elementRect.top + elementRect.height > 0 && elementRect.top < windowHeight;
+  const windowWidth = window.innerWidth;
+  return (
+    elementRect.top + elementRect.height > 0 &&
+    elementRect.top < windowHeight &&
+    elementRect.left + elementRect.width > 0 &&
+    elementRect.left < windowWidth
+  );
 }
 
 export function getElementPosition(element: HTMLElement): { x: number; y: number } {
@@ -112,21 +117,18 @@ export function removeAllCssClasses(element: HTMLElement) {
 }
 
 export function overwriteCssClasses(element: HTMLElement, cssClasses: string | null) {
-  if (cssClasses == null)
-  {
+  if (cssClasses == null) {
     removeAllCssClasses(element);
-  }
-  else{
+  } else {
     element.setAttribute('class', cssClasses);
-  }  
+  }
 }
 
 export function getCssStyle(element: HTMLElement, styleName: string): string {
   return element.style.getPropertyValue(styleName);
 }
 
-export function getCssStyles(element: HTMLElement) : string
-{
+export function getCssStyles(element: HTMLElement): string {
   return element.style.cssText;
 }
 
@@ -153,7 +155,7 @@ export function removeAllCssStyles(element: HTMLElement) {
 
 export function overwriteCssStyles(element: HTMLElement, styles: string | null) {
   if (styles == null) {
-    removeAllCssStyles(element)    
+    removeAllCssStyles(element);
   } else {
     element.style.cssText = styles;
   }
