@@ -1,6 +1,6 @@
 {
   "name": "mibreit-dom-tools",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Abstraction for dom manipulation calls",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

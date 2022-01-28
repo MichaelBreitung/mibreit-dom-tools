@@ -37,6 +37,10 @@ export function prependBeforeChild(element: HTMLElement, child: HTMLElement) {
   child.parentElement.insertBefore(element, child);
 }
 
+export function appendAfterChild(element: HTMLElement, child: HTMLElement) {
+  child.parentElement.insertBefore(element, child.nextSibling);
+}
+
 export function getChildNodes(element: HTMLElement): Array<Node> {
   const nodes: NodeList = element.childNodes;
   const nodesArray: Array<Node> = new Array();
@@ -69,9 +73,10 @@ export function getParentElement(element: HTMLElement): HTMLElement {
 }
 
 export function getElementDimension(element: HTMLElement): TElementDimension {
+  const elementRect: DOMRect = element.getBoundingClientRect();
   return {
-    width: element.clientWidth,
-    height: element.clientHeight,
+    width: elementRect.width,
+    height: elementRect.height,
   };
 }
 
@@ -234,6 +239,7 @@ export const DomTools = {
   prependChildElement,
   appendChildElement,
   prependBeforeChild,
+  appendAfterChild,
   getChildNodes,
   setInnerHtml,
   wrapElements,

@@ -14,6 +14,7 @@ export declare function removeElement(element: HTMLElement): void;
 export declare function prependChildElement(element: HTMLElement, parent: HTMLElement): void;
 export declare function appendChildElement(element: Node, parent: Node): void;
 export declare function prependBeforeChild(element: HTMLElement, child: HTMLElement): void;
+export declare function appendAfterChild(element: HTMLElement, child: HTMLElement): void;
 export declare function getChildNodes(element: HTMLElement): Array<Node>;
 export declare function setInnerHtml(parent: HTMLElement, inner: string): void;
 export declare function wrapElements(elements: Array<Node>, wrapper: HTMLElement): void;
@@ -60,6 +61,7 @@ export declare const DomTools: {
     prependChildElement: typeof prependChildElement;
     appendChildElement: typeof appendChildElement;
     prependBeforeChild: typeof prependBeforeChild;
+    appendAfterChild: typeof appendAfterChild;
     getChildNodes: typeof getChildNodes;
     setInnerHtml: typeof setInnerHtml;
     wrapElements: typeof wrapElements;
