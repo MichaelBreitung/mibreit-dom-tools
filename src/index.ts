@@ -17,6 +17,12 @@ export function createElement(tagName: string): HTMLElement {
   return document.createElement(tagName);
 }
 
+export function createInputElement(type: string): HTMLInputElement {
+  const input: HTMLInputElement = document.createElement('input');
+  input.type = type;
+  return input;
+}
+
 export function cloneElement(element: Node) {
   return element.cloneNode();
 }
@@ -234,6 +240,7 @@ export const DomTools = {
   documentReady,
   getRootFontSize,
   createElement,
+  createInputElement,
   cloneElement,
   removeElement,
   prependChildElement,

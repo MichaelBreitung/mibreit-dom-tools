@@ -9,6 +9,7 @@ export declare type TElementDimension = {
 export declare function documentReady(callback: () => void): void;
 export declare function getRootFontSize(): number;
 export declare function createElement(tagName: string): HTMLElement;
+export declare function createInputElement(type: string): HTMLInputElement;
 export declare function cloneElement(element: Node): Node;
 export declare function removeElement(element: HTMLElement): void;
 export declare function prependChildElement(element: HTMLElement, parent: HTMLElement): void;
@@ -56,6 +57,7 @@ export declare const DomTools: {
     documentReady: typeof documentReady;
     getRootFontSize: typeof getRootFontSize;
     createElement: typeof createElement;
+    createInputElement: typeof createInputElement;
     cloneElement: typeof cloneElement;
     removeElement: typeof removeElement;
     prependChildElement: typeof prependChildElement;
