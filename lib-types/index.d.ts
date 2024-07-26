@@ -2,7 +2,7 @@
  * @author Michael Breitung
  * @copyright Michael Breitung Photography (www.mibreit-photo.com)
  */
-export declare type TElementDimension = {
+export type TElementDimension = {
     width: number;
     height: number;
 };
@@ -20,7 +20,7 @@ export declare function getChildNodes(element: HTMLElement): Array<Node>;
 export declare function setInnerHtml(parent: HTMLElement, inner: string): void;
 export declare function wrapElements(elements: Array<Node>, wrapper: HTMLElement): void;
 export declare function unwrapElements(wrapper: HTMLElement): void;
-export declare function getParentElement(element: HTMLElement): HTMLElement;
+export declare function getParentElement(element: HTMLElement): HTMLElement | null;
 export declare function getElementDimension(element: HTMLElement): TElementDimension;
 export declare function isElementWithinWindow(element: HTMLElement): boolean;
 export declare function getElementPosition(element: HTMLElement): {
@@ -45,7 +45,7 @@ export declare function setAttribute(element: HTMLElement, attribute: string, va
 export declare function removeAttribute(element: HTMLElement, attribute: string): void;
 export declare function addClickEventListener(element: HTMLElement, callback: (event?: MouseEvent) => void): void;
 export declare function addKeyEventListener(callback: (event: KeyboardEvent) => void): void;
-export declare function addScrollEventListener(callback: (event: UIEvent) => void): void;
+export declare function addScrollEventListener(callback: (event: Event) => void): void;
 export declare function addResizeEventListener(callback: (event: UIEvent) => void): void;
 export declare function addEventListener(element: HTMLElement, event: string, callback: (event: any) => void): void;
 export declare function disableContextMenu(element: HTMLElement): void;
