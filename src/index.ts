@@ -40,11 +40,15 @@ export function appendChildElement(element: Node, parent: Node) {
 }
 
 export function prependBeforeChild(element: HTMLElement, child: HTMLElement) {
-  child.parentElement.insertBefore(element, child);
+  if (child.parentElement) {
+    child.parentElement.insertBefore(element, child);
+  }
 }
 
 export function appendAfterChild(element: HTMLElement, child: HTMLElement) {
-  child.parentElement.insertBefore(element, child.nextSibling);
+  if (child.parentElement) {
+    child.parentElement.insertBefore(element, child.nextSibling);
+  }
 }
 
 export function getChildNodes(element: HTMLElement): Array<Node> {
@@ -61,20 +65,24 @@ export function setInnerHtml(parent: HTMLElement, inner: string) {
 }
 
 export function wrapElements(elements: Array<Node>, wrapper: HTMLElement) {
-  elements[0].parentNode.insertBefore(wrapper, elements[0]);
-  elements.forEach((element: HTMLElement) => {
-    wrapper.appendChild(element);
-  });
+  if (elements[0].parentNode) {
+    elements[0].parentNode.insertBefore(wrapper, elements[0]);
+    elements.forEach((element: Node) => {
+      wrapper.appendChild(element);
+    });
+  }
 }
 
 export function unwrapElements(wrapper: HTMLElement) {
-  const elements = wrapper.childNodes;
-  elements.forEach((element: HTMLElement) => {
-    wrapper.parentNode.insertBefore(element, wrapper);
-  });
+  if (wrapper.parentNode) {
+    const elements = wrapper.childNodes;
+    elements.forEach((element: Node) => {
+      wrapper.parentNode!.insertBefore(element, wrapper);
+    });
+  }
 }
 
-export function getParentElement(element: HTMLElement): HTMLElement {
+export function getParentElement(element: HTMLElement): HTMLElement | null {
   return element.parentElement;
 }
 
@@ -200,7 +208,7 @@ export function addKeyEventListener(callback: (event: KeyboardEvent) => void) {
   document.addEventListener('keydown', callback);
 }
 
-export function addScrollEventListener(callback: (event: UIEvent) => void) {
+export function addScrollEventListener(callback: (event: Event) => void) {
   document.addEventListener('scroll', callback);
 }
 
