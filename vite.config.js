@@ -28,6 +28,11 @@ export default defineConfig({
           preserveModulesRoot: 'src',
         },
         {
+          dir: 'lib-cjs',
+          format: 'cjs',
+          entryFileNames: `index.cjs`,
+        },
+        {
           dir: 'lib-iife',
           format: 'iife',
           name: 'mibreitDomTools',
